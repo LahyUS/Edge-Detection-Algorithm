@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iostream>
 #include "opencv2/opencv.hpp "
 #include "opencv2/highgui/highgui.hpp"
 #include <string>
@@ -17,10 +18,12 @@ int main(int argc, char** argv)
 	}
 
 	// Intialization
-	Mat src_img, dst_img;
+	Mat src_img, dst_img, grayscale_image;
+	dst_img.create(src_img.rows, src_img.cols, src_img.type());
 	int code = atoi(argv[2]);
 	int optional = atoi(argv[3]);
 	Edge_Detector ed;
+	int result = 0;
 
 	// Load color image
 	src_img = imread(argv[1], IMREAD_COLOR);
@@ -33,52 +36,38 @@ int main(int argc, char** argv)
 	// Edge detection using Sobel kernel
 	if (code == 0)
 	{
-		// Show destination image
-		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", src_img);
-		waitKey(0);
-
-		ed.detectBySobel(src_img, dst_img);
+		result = ed.detectBySobel(src_img, dst_img);
 	}
 
 	// Edge detection using Prewitt kernel
 	else if (code == 1)
 	{
-		// Show destination image
-		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", src_img);
-		waitKey(0);
-
-		ed.detectByPrewitt(src_img, dst_img);
+		result = ed.detectByPrewitt(grayscale_image, dst_img);
 	}
 
 	// Edge detection using Laplace kernel
 	else if (code == 2)
 	{
-		// Show destination image
-		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", src_img);
-		waitKey(0);
-
-		short brightness = atoi(argv[3]);
-		ed.detectByLaplace(src_img, dst_img);
+		result = ed.detectByLaplace(src_img, dst_img);
 	}
 
 	// Edge detection using Cany method
 	else if (code == 3)
 	{
-		// Show destination image
-		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", src_img);
-		waitKey(0);
-
-		float contrast = atof(argv[3]);
-		ed.detectByCany(src_img, dst_img);
+		result = ed.detectByCany(src_img, dst_img);
 	}
 
-	// Show destination image
-	namedWindow("Display window", WINDOW_AUTOSIZE);
-	imshow("Display window", dst_img);
-	waitKey(0);
+	if (result == 1)
+	{
+		imshow("Source Image", src_img);
+		imshow("Destination Image", dst_img);
+
+		waitKey(0);
+	}
+	else
+	{
+		cout << "Cannot open image\n";
+	}
+
 	return 0;
 }
