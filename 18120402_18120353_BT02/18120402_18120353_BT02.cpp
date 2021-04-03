@@ -9,12 +9,6 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
-	//Mat grayscale_image = imread("C:\\Users\\pc\\Desktop\\Temparory\\Lenna.png", IMREAD_GRAYSCALE); // (2)
-	//Mat dstimg;
-	//ColorTransformer trans;
-	//trans.ConvertGrayscaletoRGB(grayscale_image, dstimg);
-	//trans.ConvertRGBtoGrayscale(grayscale_image, dstimg);
-
 	// Check number of argument is correct
 	if (argc < 2)
 	{
@@ -23,14 +17,14 @@ int main(int argc, char** argv)
 	}
 
 	// Intialization
-	Mat color_image, dst_img, grayscale_image;
+	Mat src_img, dst_img;
 	int code = atoi(argv[2]);
 	int optional = atoi(argv[3]);
 	Edge_Detector ed;
 
 	// Load color image
-	color_image = imread(argv[1], IMREAD_COLOR);
-	if (!color_image.data)
+	src_img = imread(argv[1], IMREAD_COLOR);
+	if (!src_img.data)
 	{
 		cout << "Cannot open image" << std::endl;
 		return -1;
@@ -41,10 +35,10 @@ int main(int argc, char** argv)
 	{
 		// Show destination image
 		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", color_image);
+		imshow("Display window", src_img);
 		waitKey(0);
 
-		ed.detectBySobel(color_image, dst_img);
+		ed.detectBySobel(src_img, dst_img);
 	}
 
 	// Edge detection using Prewitt kernel
@@ -52,10 +46,10 @@ int main(int argc, char** argv)
 	{
 		// Show destination image
 		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", grayscale_image);
+		imshow("Display window", src_img);
 		waitKey(0);
 
-		ed.detectByPrewitt(grayscale_image, dst_img);
+		ed.detectByPrewitt(src_img, dst_img);
 	}
 
 	// Edge detection using Laplace kernel
@@ -63,11 +57,11 @@ int main(int argc, char** argv)
 	{
 		// Show destination image
 		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", color_image);
+		imshow("Display window", src_img);
 		waitKey(0);
 
 		short brightness = atoi(argv[3]);
-		ed.detectByLaplace(color_image, dst_img);
+		ed.detectByLaplace(src_img, dst_img);
 	}
 
 	// Edge detection using Cany method
@@ -75,11 +69,11 @@ int main(int argc, char** argv)
 	{
 		// Show destination image
 		namedWindow("Display window", WINDOW_AUTOSIZE);
-		imshow("Display window", color_image);
+		imshow("Display window", src_img);
 		waitKey(0);
 
 		float contrast = atof(argv[3]);
-		ed.detectByCany(color_image, dst_img);
+		ed.detectByCany(src_img, dst_img);
 	}
 
 	// Show destination image
