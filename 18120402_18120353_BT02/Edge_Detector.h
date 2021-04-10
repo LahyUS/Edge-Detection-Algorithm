@@ -3,6 +3,7 @@
 #include "opencv2/opencv.hpp "
 #include "opencv2/highgui/highgui.hpp"
 #include <string>
+#include <math.h>
 
 using namespace cv;
 using namespace std;
@@ -38,6 +39,6 @@ public:
 			src: source image, import as a matrix
 			dst: destination image, export as a matrix
 	*/
-	int detectByCany(Mat sourceImage, Mat destinationImage);
+	int detectByCanny(Mat sourceImage, Mat destinationImage);
 };
 
