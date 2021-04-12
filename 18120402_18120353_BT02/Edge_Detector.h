@@ -15,7 +15,7 @@ public:
 			dst: destination image, export as a matrix
 			"..." : other parameters in other case
 	*/
-	int detectBySobel(Mat src,Mat dst);
+	int detectBySobel(Mat src, Mat dst);
 
  	/* Edge detection using Prewitt kernel:
        Parameters:
@@ -38,6 +38,6 @@ public:
 			src: source image, import as a matrix
 			dst: destination image, export as a matrix
 	*/
-	int detectByCany(Mat sourceImage, Mat destinationImage);
+	int detectByCanny(Mat sourceImage, Mat destinationImage);
 };
 
