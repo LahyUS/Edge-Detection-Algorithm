@@ -38,6 +38,6 @@ public:
 			src: source image, import as a matrix
 			dst: destination image, export as a matrix
 	*/
-	int detectByCanny(Mat sourceImage, Mat destinationImage);
+	int detectByCanny(Mat sourceImage, Mat& destinationImage);
 };
 

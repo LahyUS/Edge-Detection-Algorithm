@@ -363,7 +363,7 @@ int Edge_Detector::detectByLaplace(Mat sourceImage, Mat destinationImage)
 	return 1;
 }
 
-int Edge_Detector::detectByCanny(Mat sourceImage, Mat destinationImage)
+int Edge_Detector::detectByCanny(Mat sourceImage, Mat& destinationImage)
 {
 	//initial variables
 	vector<float> gaussianMatrix, verticalDirection, horizontalDirection;
