@@ -107,7 +107,7 @@ Mat computeGradient(Mat& sourceImage, Mat& destinationImage)
 			else if (((theta > 67.5) && (theta < 112.5)) || ((theta < -67.5) && (theta > -112.5)))
 				segment = 3;// |
 			else if (((theta > 112.5) && (theta < 157.5)) || ((theta < -22.5) && (theta > -67.5)))
-				segment = 4;// \
+				segment = 4;// \ 
 			pSeg[0] = segment;
 		}
 	}
@@ -406,6 +406,4 @@ int Edge_Detector::detectByCanny(Mat sourceImage, Mat& destinationImage)
 
 	return 1;
 }
-
-
 
