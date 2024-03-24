@@ -1,13 +1,13 @@
 #include "Convolutioner.h"
 
-void Convolutioner::SetKernel(vector<float> kernel, int kWidth, int kHeight)
+void Convolutioner::setKernel(vector<float> kernel, int kWidth, int kHeight)
 {
 	_kernel = kernel;
 	_kernelWidth = kWidth;
 	_kernelHeight = kHeight;
 };
 
-int Convolutioner::DoConvolution(const Mat& sourceImage, Mat& destinationImage)
+int Convolutioner::operateConvolution(const Mat& sourceImage, Mat& destinationImage)
 {
 	// Check if source image is loaded or not
 	if (sourceImage.empty())

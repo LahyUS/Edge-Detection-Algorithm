@@ -17,17 +17,17 @@ public:
 	vector<float> GetKernel() { return _kernel; };
 
 	// Set kernel with parameters: kernel vector, kernel witdth, kernel height
-	void SetKernel(vector<float> kernel, int kWidth, int kHeight);
+	void setKernel(vector<float> kernel, int kWidth, int kHeight);
 
 	/*
-	Do convolution using a declared kernel:
+	Operate convolution using a declared kernel:
 		sourceImage: input image
 		destinationImage: output image
 	Return:
 		1: success
 		0: fail (cannot read input image,...)
 	*/
-	int DoConvolution(const Mat& sourceImage, Mat& destinationImage);
+	int operateConvolution(const Mat& sourceImage, Mat& destinationImage);
 
 	Convolutioner() {}
 	~Convolutioner() {}
